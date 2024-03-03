@@ -1,11 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import Timer from './components/Time/Timer';
+import React, { useState } from 'react';
+import Modal from './components/Time/Modal';
 
-function App() {
+const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <Timer />
+    <div>
+      <h1>Modal Example</h1>
+      <button onClick={openModal}>Open Modal</button>
+      {isModalOpen && <Modal onClose={closeModal} />}
+    </div>
   );
-}
+};
 
 export default App;
